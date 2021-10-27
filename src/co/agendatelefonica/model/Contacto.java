@@ -19,6 +19,10 @@ public class Contacto implements Serializable {
     private Persona persona;
     private LinkedList<Telefono> telefonos = new LinkedList<Telefono>();
 
+    public Contacto(Persona persona) {
+        this.persona = persona;
+    }
+
     public Persona getPersona() {
         return persona;
     }
@@ -35,6 +39,9 @@ public class Contacto implements Serializable {
         return telefonos;
     }
 
-    
+    @Override
+    public String toString() {
+        return persona.toString();
+    }
 
 }

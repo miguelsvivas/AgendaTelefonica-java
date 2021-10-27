@@ -5,6 +5,7 @@
  */
 package co.agendatelefonica;
 
+import co.agendatelefonica.model.AgendaTelefonica;
 import co.agendatelefonica.ui.AgendaUI;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -26,15 +27,15 @@ public class Main {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
 
-                /**
+               /**
                  * Lectura de objetos desde archivo
                  */
-          /*      PhoneBook phoneBook = null;
+                AgendaTelefonica agenda = null;
                 ObjectInputStream ois = null;
                 try {
                     ois = new ObjectInputStream(
-                            new FileInputStream("phonebook.data"));
-                    phoneBook = (PhoneBook) ois.readObject();
+                            new FileInputStream("agendatelefonica.data"));
+                    agenda = (AgendaTelefonica) ois.readObject();
                 } catch (FileNotFoundException ex) {
                     Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (IOException ex) {
@@ -51,20 +52,20 @@ public class Main {
                     }
                 }
 
-                if (phoneBook == null) {
-                    phoneBook = new PhoneBook();
+                if (agenda == null) {
+                    agenda = new AgendaTelefonica();
                 }
-*/
-              //  try {
-                    AgendaUI agenda = new AgendaUI();
-                    agenda.setVisible(true);
-         //       } catch (Exception ex) {
-         //           Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        //        }
+
+                try {
+                    new AgendaUI(agenda).setVisible(true);
+                } catch (Exception ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
-        });
+        });        
         
 
 }
     
-}
+} 
+                   
