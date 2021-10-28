@@ -302,7 +302,7 @@ public class AgendaUI extends javax.swing.JFrame {
                     // El actualizar el JTable usando el método updateUI funciona,
                     // para efectos de visualización, pero genera inconvenientes
                     // al momento de eliminar el último (o único) teléfono de un
-                    // contacto. Ejecute y dese cuenta por si mismo.
+                    // contacto.
                     //  jtbPhones.updateUI();
 
                     // El problema que se presenta con el updateUI, se resuelve
