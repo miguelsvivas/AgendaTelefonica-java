@@ -41,7 +41,7 @@ public class Persona implements Serializable {
 
     @Override
     public String toString() {
-        return "{" + "nombre=" + nombre + ", apellido=" + apellido + '}';
+        return nombre + " " +apellido;
     }
     
     

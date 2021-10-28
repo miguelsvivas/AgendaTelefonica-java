@@ -38,6 +38,10 @@ public class Contacto implements Serializable {
     public LinkedList<Telefono> getTelefonos() {
         return telefonos;
     }
+    
+    public void remove(int index) {
+        this.telefonos.remove(index);
+    }
 
     @Override
     public String toString() {
