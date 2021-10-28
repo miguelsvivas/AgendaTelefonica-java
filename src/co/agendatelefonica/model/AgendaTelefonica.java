@@ -29,5 +29,14 @@ public class AgendaTelefonica implements Serializable {
     public List<Contacto> getContactos(){
         return this.contactos;
     }
+    
+        /**
+     * Elimina contactos de la agenda.
+     *
+     * @param contacto contacto a eliminar
+     */
+    public void remove(Contacto contacto) {
+        this.contactos.remove(contacto);
+    }
 
 }

@@ -295,7 +295,7 @@ public class AgendaUI extends javax.swing.JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int index = jTable.getSelectedRow();
-                String msg = "Do you really want to delete the phone number ";
+                String msg = "Esta seguro de eliminar el numero seleccionado?" ;
                 int option = JOptionPane.showConfirmDialog(AgendaUI.this, msg);
                 if (option == JOptionPane.OK_OPTION) {
                     select.remove(index);
@@ -309,6 +309,35 @@ public class AgendaUI extends javax.swing.JFrame {
                     // actualizando la tabla con el método fireTableDataChanged
                     ((AbstractTableModel) jTable.getModel()).fireTableDataChanged();
                 }
+            }
+        });
+        
+        
+                /**
+         * Clase (anónima) que implementa el manejador de eventos para crear un
+         * nuevo contacto
+         */
+        this.btnContactoNuevo.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setSelected(null);
+            }
+        });
+        
+                /**
+         * Clase (anónima) que implementa el manejador de eventos para crear un
+         * nuevo contacto
+         */
+        this.btnEliminarCon.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                agenda.remove(select);
+                setSelected(null);
+                jList.updateUI();
+//                ((AbstractListModel)jlsContacts.getSelectionModel()).equals(e);
+                jList.clearSelection();
             }
         });
         
@@ -348,7 +377,8 @@ public class AgendaUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jToolBar1 = new javax.swing.JToolBar();
-        jButton1 = new javax.swing.JButton();
+        btnContactoNuevo = new javax.swing.JButton();
+        btnEliminarCon = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -374,16 +404,27 @@ public class AgendaUI extends javax.swing.JFrame {
 
         jToolBar1.setRollover(true);
 
-        jButton1.setText("Agregar Contacto ");
-        jButton1.setFocusable(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnContactoNuevo.setText("Nuevo Contacto ");
+        btnContactoNuevo.setFocusable(false);
+        btnContactoNuevo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnContactoNuevo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnContactoNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnContactoNuevoActionPerformed(evt);
             }
         });
-        jToolBar1.add(jButton1);
+        jToolBar1.add(btnContactoNuevo);
+
+        btnEliminarCon.setText("Eliminar Contacto");
+        btnEliminarCon.setFocusable(false);
+        btnEliminarCon.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnEliminarCon.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnEliminarCon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarConActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnEliminarCon);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
@@ -447,7 +488,7 @@ public class AgendaUI extends javax.swing.JFrame {
                     .addComponent(jtxapellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnGuardar)
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -564,7 +605,7 @@ public class AgendaUI extends javax.swing.JFrame {
                             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(82, 82, 82)
+                        .addGap(79, 79, 79)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -573,27 +614,27 @@ public class AgendaUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(68, 68, 68)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(74, Short.MAX_VALUE)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(5, 5, 5)
                         .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(20, 20, 20)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnContactoNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContactoNuevoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnContactoNuevoActionPerformed
 
     private void jtxnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxnombreActionPerformed
         // TODO add your handling code here:
@@ -619,12 +660,17 @@ public class AgendaUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_comboboxTipoActionPerformed
 
+    private void btnEliminarConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarConActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminarConActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarNumero;
     private javax.swing.JButton btnBorrarNumero;
+    private javax.swing.JButton btnContactoNuevo;
+    private javax.swing.JButton btnEliminarCon;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JComboBox comboboxTipo;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
